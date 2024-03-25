@@ -16,3 +16,10 @@ jobs:
           distribution: 'corretto'
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: dist-folder
+          path: |
+            /home/runner/work/test-ng-actions/test-ng-actions/frontend/dist
+          retention-days: 15
